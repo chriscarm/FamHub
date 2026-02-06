@@ -1,0 +1,9 @@
+backup_id=openclaw-pre-hardening-2026-02-05_172911_PST
+created_at=2026-02-06T01:29:28Z
+source_runtime=/Users/fanny/.openclaw
+source_workspace=/Users/fanny/projectfiles
+source_launchd=/Users/fanny/Library/LaunchAgents/ai.openclaw.gateway.plist
+source_hook=/Users/fanny/.moltbot/hooks/startup-notify/HOOK.md
+branch=codex/openclaw-backup-2026-02-05_172911_PST
+backup_type=github-sanitized
+raw_local_backup=/Users/fanny/.openclaw/backups/openclaw-pre-hardening-2026-02-05_172911_PST-raw

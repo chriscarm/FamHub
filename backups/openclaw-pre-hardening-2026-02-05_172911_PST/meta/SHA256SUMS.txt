@@ -1,0 +1,14 @@
+774ad5341096764c71edbd64f719f402ab91dcfc2ab540b049c1681558be2710  ./openclaw/exec-approvals.json
+212142f109925ac7090b29da30917d72e92629d00615a38732b595aebb9b6c39  ./openclaw/openclaw.json
+967030b64eaa9d9bdf0714999f764f23f1063b28d44b5233a40d63a5fd54704f  ./openclaw/cron-jobs.json
+33d6792d46a13afc4f3f54f77d6e1b3c3017c89a8dd318fc69db5ddd9cb4ce25  ./workspace/IDENTITY.md
+63b4c726ddf6fc31db4b79d9e9b323c0510c94c7ca66f151217aaf5266d141fb  ./workspace/HEARTBEAT.md
+e6376c7208a9fb916419fd0377e42d93d4c800462fa91e21c62066df30bb07df  ./workspace/MEMORY.md
+4a88035158a42ffe602db69a8e2df44bbe57a690f92f6a2abab67ce48446ccaf  ./workspace/USER.md
+3687b2cad8498f0e5bab207e5ba4260c6f6612a2a3a8eb56242a17bdfe266b4d  ./workspace/SOUL.md
+81d78365380ddaea4f599b447a0e163b85826e1452a0525828b1ef937bf95326  ./workspace/AGENTS.md
+5399df068da14faffe25f001b9c7f5e36eed0d2cf3c872f8ac6d01c73305b6c0  ./workspace/TOOLS.md
+7296cde4b78442365c2d51c5959fd07dcce01249715e9028eed2e59d0c56cee2  ./meta/backup-info.txt
+f9e35997ab1881b940cd5da7632557b84de62fa5ad56fb57bae0235de0a5227c  ./meta/SHA256SUMS.txt
+4a4bd90970adf855385d17882cb624076d5277f44ce2caa7ec22761429bf8810  ./hooks/startup-notify.HOOK.md
+5ea91bcc37936a072af671907148bab2ec2f3be33dc05574c9ba931a5774ea9e  ./launchd/ai.openclaw.gateway.plist

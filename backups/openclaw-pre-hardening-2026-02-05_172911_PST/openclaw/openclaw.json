@@ -1,0 +1,406 @@
+{
+  "meta": {
+    "lastTouchedVersion": "2026.2.3-1",
+    "lastTouchedAt": "2026-02-05T21:10:54.802Z"
+  },
+  "env": {
+    "BRAVE_API_KEY": "${BRAVE_API_KEY}",
+    "NVIDIA_API_KEY": "${NVIDIA_API_KEY}",
+    "ELEVENLABS_API_KEY": "${ELEVENLABS_API_KEY}",
+    "PATH": "/Users/fanny/.bun/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+  },
+  "wizard": {
+    "lastRunAt": "2026-02-05T13:00:22.610Z",
+    "lastRunVersion": "2026.2.3-1",
+    "lastRunCommand": "doctor",
+    "lastRunMode": "local"
+  },
+  "browser": {
+    "enabled": true,
+    "headless": false,
+    "defaultProfile": "openclaw",
+    "profiles": {
+      "openclaw": {
+        "cdpPort": 18823,
+        "color": "#7C3AED"
+      }
+    }
+  },
+  "auth": {
+    "profiles": {
+      "anthropic:claude-cli": {
+        "provider": "anthropic",
+        "mode": "oauth"
+      },
+      "xai:manual": {
+        "provider": "xai",
+        "mode": "api_key"
+      },
+      "anthropic:manual": {
+        "provider": "anthropic",
+        "mode": "token"
+      }
+    },
+    "order": {
+      "anthropic": [
+        "anthropic:claude-cli",
+        "anthropic:manual"
+      ]
+    }
+  },
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "nvidia": {
+        "baseUrl": "https://integrate.api.nvidia.com/v1",
+        "apiKey": "${NVIDIA_API_KEY}",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "moonshotai/kimi-k2.5",
+            "name": "Kimi K2.5",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 300000,
+            "maxTokens": 8192
+          }
+        ]
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "anthropic/claude-opus-4-5-20251101"
+      },
+      "models": {
+        "anthropic/claude-opus-4-5-20251101": {},
+        "anthropic/claude-codex-5-3": {}
+      },
+      "workspace": "/Users/fanny/projectfiles",
+      "bootstrapMaxChars": 15000,
+      "memorySearch": {
+        "sources": [
+          "memory"
+        ],
+        "experimental": {
+          "sessionMemory": false
+        }
+      },
+      "compaction": {
+        "mode": "safeguard",
+        "reserveTokensFloor": 30000,
+        "memoryFlush": {
+          "enabled": true,
+          "softThresholdTokens": 20000,
+          "prompt": "NO_REPLY. Before compaction, write a DETAILED summary to memory. Include: all key decisions made, important context about people/topics discussed, any commitments or promises made, technical details that matter, and the current state of any ongoing tasks. Be thorough - this summary will be the only record after compaction.",
+          "systemPrompt": "You are about to lose older conversation history. Write comprehensive notes capturing everything important. Focus on: WHO (people, their preferences, relationships), WHAT (topics, decisions, tasks), and CONTEXT (tone, inside jokes, important background). Be detailed."
+        }
+      },
+      "blockStreamingDefault": "on",
+      "blockStreamingBreak": "text_end",
+      "heartbeat": {
+        "model": "anthropic/claude-sonnet-4-20250514"
+      },
+      "maxConcurrent": 4,
+      "subagents": {
+        "maxConcurrent": 8
+      }
+    },
+    "list": [
+      {
+        "id": "main"
+      },
+      {
+        "id": "bonnie",
+        "name": "bonnie",
+        "workspace": "/Users/fanny/projectfiles/bots/bonnie",
+        "agentDir": "/Users/fanny/.clawdbot/agents/bonnie/agent",
+        "model": "anthropic/claude-opus-4-5-20251101"
+      },
+      {
+        "id": "whatsapp-sonnet",
+        "name": "Fanny",
+        "workspace": "/Users/fanny/projectfiles/bots/whatsapp-kimi",
+        "agentDir": "/Users/fanny/projectfiles/bots/whatsapp-kimi",
+        "model": "anthropic/claude-sonnet-4-20250514",
+        "humanDelay": {
+          "mode": "natural",
+          "minMs": 500,
+          "maxMs": 2000
+        }
+      },
+      {
+        "id": "discord-fanny-test",
+        "name": "Fanny",
+        "workspace": "/Users/fanny/projectfiles/bots/discord-fanny-test",
+        "agentDir": "/Users/fanny/projectfiles/bots/discord-fanny-test",
+        "model": "anthropic/claude-opus-4-5-20251101",
+        "humanDelay": {
+          "mode": "natural",
+          "minMs": 500,
+          "maxMs": 2000
+        }
+      }
+    ]
+  },
+  "tools": {
+    "web": {
+      "search": {
+        "provider": "brave",
+        "apiKey": "${BRAVE_API_KEY}"
+      }
+    },
+    "agentToAgent": {
+      "enabled": true
+    },
+    "elevated": {
+      "enabled": true,
+      "allowFrom": {
+        "imessage": [
+          "+13477444249"
+        ]
+      }
+    },
+    "exec": {
+      "security": "full",
+      "ask": "off"
+    }
+  },
+  "bindings": [
+    {
+      "agentId": "bonnie",
+      "match": {
+        "channel": "discord",
+        "accountId": "bonnie"
+      }
+    },
+    {
+      "agentId": "whatsapp-sonnet",
+      "match": {
+        "channel": "whatsapp"
+      }
+    },
+    {
+      "agentId": "discord-fanny-test",
+      "match": {
+        "channel": "discord"
+      }
+    }
+  ],
+  "messages": {
+    "ackReactionScope": "group-mentions"
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true
+  },
+  "session": {
+    "dmScope": "per-channel-peer"
+  },
+  "hooks": {
+    "internal": {
+      "enabled": true,
+      "entries": {
+        "boot-md": {
+          "enabled": true
+        },
+        "command-logger": {
+          "enabled": true
+        },
+        "session-memory": {
+          "enabled": true
+        }
+      },
+      "load": {
+        "extraDirs": [
+          "~/.moltbot/hooks"
+        ]
+      }
+    }
+  },
+  "web": {
+    "enabled": true
+  },
+  "channels": {
+    "whatsapp": {
+      "dmPolicy": "allowlist",
+      "allowFrom": [
+        "+13477444249",
+        "+12534143596",
+        "+13238289715",
+        "+14165751195"
+      ],
+      "groupPolicy": "allowlist",
+      "historyLimit": 50,
+      "chunkMode": "newline",
+      "mediaMaxMb": 50,
+      "blockStreaming": true,
+      "groups": {
+        "120363425518656432@g.us": {
+          "requireMention": false
+        }
+      },
+      "debounceMs": 0
+    },
+    "telegram": {
+      "enabled": false,
+      "dmPolicy": "allowlist",
+      "botToken": "${TELEGRAM_BOT_TOKEN}",
+      "allowFrom": [
+        "*"
+      ],
+      "groupPolicy": "allowlist",
+      "streamMode": "partial"
+    },
+    "discord": {
+      "enabled": true,
+      "token": "${DISCORD_MAIN_BOT_TOKEN}",
+      "groupPolicy": "allowlist",
+      "guilds": {
+        "1466470773949726948": {
+          "channels": {
+            "1466470774641660054": {
+              "requireMention": false
+            },
+            "1466891894054195236": {
+              "requireMention": false
+            },
+            "1466891895665066025": {
+              "requireMention": false
+            },
+            "1466891897137266740": {
+              "requireMention": false
+            },
+            "1466891898915524841": {
+              "requireMention": false
+            },
+            "1466891900467413143": {
+              "requireMention": false
+            },
+            "1466891901918511157": {
+              "requireMention": false
+            },
+            "1466891902904439069": {
+              "requireMention": false
+            },
+            "1466894349575917660": {
+              "requireMention": false
+            },
+            "1466894351253901557": {
+              "requireMention": false
+            },
+            "1466894352344154271": {
+              "requireMention": false
+            },
+            "1466917492843610253": {
+              "requireMention": false
+            },
+            "1468847299898769570": {
+              "requireMention": false
+            }
+          }
+        }
+      },
+      "accounts": {
+        "bonnie": {
+          "enabled": true,
+          "token": "${DISCORD_BONNIE_BOT_TOKEN}",
+          "groupPolicy": "allowlist"
+        },
+        "main": {
+          "enabled": true,
+          "token": "${DISCORD_MAIN_BOT_TOKEN}",
+          "groupPolicy": "allowlist"
+        }
+      }
+    },
+    "imessage": {
+      "enabled": true,
+      "cliPath": "/opt/homebrew/bin/imsg",
+      "dbPath": "/Users/fanny/Library/Messages/chat.db",
+      "dmPolicy": "allowlist",
+      "allowFrom": [
+        "+13477444249",
+        "+12534143596",
+        "+13238289715"
+      ],
+      "groupPolicy": "allowlist",
+      "includeAttachments": true
+    }
+  },
+  "talk": {
+    "apiKey": "${TALK_API_KEY}"
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "loopback",
+    "auth": {
+      "mode": "token",
+      "token": "${OPENCLAW_GATEWAY_TOKEN}"
+    },
+    "tailscale": {
+      "mode": "serve",
+      "resetOnExit": true
+    }
+  },
+  "memory": {
+    "backend": "qmd",
+    "citations": "auto",
+    "qmd": {
+      "includeDefaultMemory": true,
+      "update": {
+        "interval": "5m"
+      },
+      "limits": {
+        "maxResults": 6,
+        "timeoutMs": 4000
+      }
+    }
+  },
+  "skills": {
+    "install": {
+      "nodeManager": "npm"
+    },
+    "entries": {
+      "goplaces": {
+        "apiKey": "x"
+      },
+      "nano-banana-pro": {
+        "apiKey": "${NANO_BANANA_PRO_API_KEY}"
+      },
+      "sag": {
+        "apiKey": "${ELEVENLABS_API_KEY}"
+      },
+      "grok-search": {
+        "apiKey": "${XAI_API_KEY}"
+      }
+    }
+  },
+  "plugins": {
+    "entries": {
+      "discord": {
+        "enabled": true
+      },
+      "imessage": {
+        "enabled": true
+      },
+      "telegram": {
+        "enabled": true
+      },
+      "whatsapp": {
+        "enabled": true
+      }
+    }
+  }
+}

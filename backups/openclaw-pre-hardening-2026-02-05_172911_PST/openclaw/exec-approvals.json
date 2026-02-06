@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "socket": {
+    "path": "/Users/fanny/.openclaw/exec-approvals.sock",
+    "token": "${EXEC_APPROVALS_SOCKET_TOKEN}"
+  },
+  "defaults": {
+    "security": "full",
+    "ask": "off"
+  },
+  "agents": {}
+}
